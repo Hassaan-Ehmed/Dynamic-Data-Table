@@ -40,12 +40,16 @@ const tableHeaders = [
   "ID",
 ];
 
+
+// return <StyledTableCell component="th" scope="row" sx={{color:`"black"}`}} align="left" >
+// {item}
+// </StyledTableCell>
 export default function DataTable() {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-          <TableRow>
+          <TableRow >
             {tableHeaders.map((th: string, index: number) => {
                 return (
                   <StyledTableCell align={index  > 0 ? "right" : "left"} key={index}>
@@ -61,24 +65,23 @@ export default function DataTable() {
           <TableBody key={index}>
             <StyledTableRow>
 
-             {column.map((item:any)=>(
+            {column.map((item:any)=>(
 
-<StyledTableCell component="th" scope="row" sx={{color:`${(typeof item === 'object' && 'style' in item && 'color' in item.style) ? item.style.color : "black"}`}} align={(typeof item === 'object' && 'alignment' in item ) ? item.alignment : (typeof item === 'object' ) ? "left" : "left" }>
+<StyledTableCell component="th" scope="row" 
+
+sx={{color:`${item?.style ? item.style.color : "black"}`}}
+
+align={item?.alignment ? item.alignment : "left"}
+>
+
+{ item?.content ? item?.content : item  }
 
 
-{
-   ((typeof item === 'object') ? (
-
-
-    ('email' in item  ? item.email : "---" ) ? ('firstName' in item ? item.firstName : "---" ) : ('lastName' in item  ? item.lastName : "---")  ?  ('phoneNo' in item ? item.phoneNo : "---") : ('cityName' in item ? item.cityName : "---") ? ('id' in item ? item.id : "---") : item
-
-
-   ) : item ) 
-}
 </StyledTableCell>
 
 
-             ))}
+             ))}  
+
             </StyledTableRow>
           </TableBody>
         ))}

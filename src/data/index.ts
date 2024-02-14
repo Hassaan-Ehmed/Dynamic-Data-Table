@@ -1,34 +1,50 @@
-export const data = [
+
+interface ABC {
+  name?: string | number;
+  alignment?: string
+  style?: React.CSSProperties | undefined
+}
+
+
+interface XYZ {
+  content?:string | number
+  alignment?:string
+  style?:React.CSSProperties | undefined
+}
+
+export const data: Array<Array<XYZ | string>> = [
   [
     "velit.aliquam@hotmail.edu",
-    { firstName: 'Hassaan',style:{color:"red"}},
+    {
+      content: 'Hassaan', style: { color: "red", }
+    },
     "Khan",
-    "+92 2239332490",
+    { content: "+92 2239332490",style:{color:"royalblue"} },
     "Islamabad",
-    "01",
+    { content: 1 },
   ],
 
   [
-    "arcu.iaculis@yahoo.net",
+    {content:"arcu.iaculis@yahoo.net",style:{color:"darkorange"}},
     "Usman",
-    "Ali",
+    {content:"Ali"},
     "+92 0239409240",
     "Karachi",
     "02"
- ],
+  ],
 
   [
-    {email:"odio.aliquam.vulputate@protonmail.couk",alignment:"right",firstName:"Kamran"},
-    
+    { content: "odio.aliquam.vulputate@protonmail.couk", alignment: "left" },
+    { content: "Ahemd" },
     "Khan",
     "+92 2183763823",
     "Karachi",
-    "03",
+    {content:"03", style:{color:"cyan"}},
   ],
 
   [
     "donec.non.justo@icloud.org",
-   {firstName:"Kamran",style:{color:"green  "}},
+    { content: "Kamran", style: { color: "green" },alignment:"right" },
     "Ali",
     "+92 9609757567",
     "Quetta",
@@ -38,7 +54,7 @@ export const data = [
     "magna.et.ipsum@yahoo.com",
     "Taj",
     "Khan",
-    "+92  9230490324",
+    {content:"+92  9230490324",alignment:"right"},
     "Lahore",
     "05",
   ],
